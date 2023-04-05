@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    MY APP
+  </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>
+    <center>MY APP</center>
+  </h1>
+  <hr>
+  <div class="pet-form">
+    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+      <div>
+        <label>Nama Pemilik Pet*</label><label class="validation-error hide" id="fullNameValidationError">.</label>
+        <input type="text" name="fullName" id="fullName">
+      </div>
+      <div>
+        <label>Jenis Hewan</label>
+        <input type="text" name="jhewan" id="jhewan">
+      </div>
+      <div>
+        <label>Keluhan</label>
+        <input type="text" name="keluhan" id="keluhan">
+      </div>
+      <div>
+        <label>Kasus</label>
+        <input type="text" name="kasus" id="kasus">
+      </div>
+      <div class="form-action-buttons">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+  <br />
+  <div class="pet-table">
+    <table class="list" id="petList">
+      <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Jenis Hewan</th>
+          <th>keluhan</th>
+          <th>Kasus</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+</html>
