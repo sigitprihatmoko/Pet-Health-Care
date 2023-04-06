@@ -23,7 +23,7 @@ const data = {
 }
 
 const dataCustomer = [
-  
+
 ]
 
 /*
@@ -180,6 +180,7 @@ function sortKeluhan(dataset) {
 
 var selectedRow = null
 
+// function ini buat nampilin display checkout bentuk pasienbaru object
 function displayCheckout() {
   nama = document.getElementById("fullName").value;
   hewan = document.getElementById("jhewan").value;
@@ -194,10 +195,11 @@ function onFormSubmit() {
   displayCheckout()
   if (validate()) {
     var formData = readFormData();
-    if (selectedRow == null)
+    if (selectedRow == null) {
       insertNewRecord(formData);
-    else
+    } else {
       updateRecord(formData);
+    }
     resetForm();
   }
 }
