@@ -22,6 +22,10 @@ const data = {
 
 }
 
+const dataCustomer = [
+  
+]
+
 /*
 function dibawah merupakan modular function 
 yang berfungsi untuk mendapatkan harga basic dari jenis suatu kucing
@@ -41,7 +45,7 @@ function getBasicPrice(jenis, dataset) {
 }
 
 // expected output pada function ini adalah Harga basic jenis kucing 
-console.log(getBasicPrice("Sphinx", data)); // 50000
+// console.log(getBasicPrice("Sphinx", data)); // 50000
 
 // jika output 0 berarti jenis tidak terdaftar
 
@@ -71,7 +75,7 @@ function getKeluhanPrice(arrKeluhan, dataset) {
 
 // expected output pada function ini adalah Harga dari semua keluhan yang ada 
 
-console.log(getKeluhanPrice(['Muntah', 'isPa', 'scabies'], data)); // 100000
+// console.log(getKeluhanPrice(['Muntah', 'isPa', 'scabies'], data)); // 100000
 
 // jika output 0 berarti tidak ada keluhan
 
@@ -114,7 +118,7 @@ function createPasien(nama, jenis, keluhan, dataset) {
 
 //contoh
 
-console.log(createPasien('sam', 'Sphinx', "muntah,ispa,scabies", data));
+// console.log(createPasien('sam', 'Sphinx', "muntah,ispa,scabies", data));
 
 /* Expected Output
 {
@@ -126,7 +130,7 @@ console.log(createPasien('sam', 'Sphinx', "muntah,ispa,scabies", data));
 
 Data object diatas bisa dikirim lewat DOM untuk keperluan Checkout
 */
-console.log(createPasien('sam', '', "", data)); // contoh untuk error handling
+// console.log(createPasien('sam', '', "", data)); // contoh untuk error handling
 
 
 
@@ -176,7 +180,18 @@ function sortKeluhan(dataset) {
 
 var selectedRow = null
 
+function displayCheckout() {
+  nama = document.getElementById("fullName").value;
+  hewan = document.getElementById("jhewan").value;
+  jenis = document.getElementById("keluhan").value;
+  keluhan = document.getElementById("kasus").value;
+  let pasienbaru = createPasien(nama, jenis, keluhan, data)
+  dataCustomer.push(pasienbaru)
+  return pasienbaru
+}
+
 function onFormSubmit() {
+  displayCheckout()
   if (validate()) {
     var formData = readFormData();
     if (selectedRow == null)

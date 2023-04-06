@@ -17,19 +17,19 @@
   <div class="pet-form">
     <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
       <div>
-        <label>Nama Pemilik Pet*</label><label class="validation-error hide" id="fullNameValidationError">.</label>
+        <label>Nama</label><label class="validation-error hide" id="fullNameValidationError">.</label>
         <input type="text" name="fullName" id="fullName">
       </div>
       <div>
-        <label>Jenis Hewan</label>
+        <label>Hewan</label>
         <input type="text" name="jhewan" id="jhewan">
       </div>
       <div>
-        <label>Keluhan</label>
+        <label>Jenis</label>
         <input type="text" name="keluhan" id="keluhan">
       </div>
       <div>
-        <label>Kasus</label>
+        <label>Keluhan</label>
         <input type="text" name="kasus" id="kasus">
       </div>
       <div class="form-action-buttons">
@@ -42,10 +42,10 @@
     <table class="list" id="petList">
       <thead>
         <tr>
-          <th>Full Name</th>
-          <th>Jenis Hewan</th>
-          <th>keluhan</th>
-          <th>Kasus</th>
+          <th>Nama</th>
+          <th>Hewan</th>
+          <th>Jenis</th>
+          <th>Keluhan</th>
           <th>Actions</th>
         </tr>
       </thead>
