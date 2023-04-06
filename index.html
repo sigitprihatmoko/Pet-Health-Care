@@ -1,60 +1,56 @@
 <!DOCTYPE html>
-<html>
-
 <head>
-  <title>
-    MY APP
-  </title>
-  <link rel="stylesheet" href="style.css">
+    <title>Crud Operation</title>
+    <link type="text/css" rel="stylesheet" href="index.css"
 </head>
 
 <body>
-
-  <h1>
-    <center>MY APP</center>
-  </h1>
-  <hr>
-  <div class="pet-form">
-    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
-      <div>
-        <label>Nama</label><label class="validation-error hide" id="fullNameValidationError">.</label>
-        <input type="text" name="fullName" id="fullName">
-      </div>
-      <div>
-        <label>Hewan</label>
-        <input type="text" name="jhewan" id="jhewan">
-      </div>
-      <div>
-        <label>Jenis</label>
-        <input type="text" name="keluhan" id="keluhan">
-      </div>
-      <div>
-        <label>Keluhan</label>
-        <input type="text" name="kasus" id="kasus">
-      </div>
-      <div class="form-action-buttons">
-        <input type="submit" value="Submit">
-      </div>
-    </form>
-  </div>
-  <br />
-  <div class="pet-table">
-    <table class="list" id="petList">
-      <thead>
+    <h1>PET CURE </h1>
+    <table>
         <tr>
-          <th>Nama</th>
-          <th>Hewan</th>
-          <th>Jenis</th>
-          <th>Keluhan</th>
-          <th>Actions</th>
+            <td>
+                <form autocomplete="off" onsubmit="onFormSubmit()">
+                    <div>
+                        <label for="namaPemilik">Nama Pemilik</label>
+                        <input type="text" name="namaPemilik" id="namaPemilik">
+                    </div>
+                    <div>
+                        <label for="hewan">Hewan</label>
+                        <input type="text" name="hewan" id="hewan">
+                    </div>
+                    <div>
+                        <label for="jHewan">Jenis Hewan</label>
+                        <input type="text" name="jHewan" id="jHewan">
+                    </div>
+                    <div>
+                        <label for="keluhan">Keluhan</label>
+                        <input type="text" name="keluhan" id="keluhan">
+                    </div>
+
+                    <div class="form_action--button">
+                        <input type="submit" value="Submit">
+                        <input type="reset" value="Reset">
+                    </div>
+                </form>
+
+                <td>
+                    <table class="list" id="dList">
+                        <thead>
+                            <tr>
+                                <th>Nama Pemilik</th>
+                                <th>Hewan</th>
+                                <th>Jenis Hewan</th>
+                                <th>Keluhan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </td>
+            </td>
         </tr>
-      </thead>
-      <tbody>
-
-      </tbody>
     </table>
-  </div>
-  <script src="index.js"></script>
+    <script type="text/javascript" src="index.js"></script>
 </body>
-
 </html>
