@@ -180,18 +180,7 @@ function sortKeluhan(dataset) {
 
 var selectedRow = null
 
-function displayCheckout() {
-  nama = document.getElementById("fullName").value;
-  hewan = document.getElementById("jhewan").value;
-  jenis = document.getElementById("keluhan").value;
-  keluhan = document.getElementById("kasus").value;
-  let pasienbaru = createPasien(nama, jenis, keluhan, data)
-  dataCustomer.push(pasienbaru)
-  return pasienbaru
-}
-
 function onFormSubmit() {
-  displayCheckout()
   if (validate()) {
     var formData = readFormData();
     if (selectedRow == null)
@@ -250,7 +239,7 @@ function updateRecord(formData) {
 }
 
 function onDelete(td) {
-  if (confirm('Are you sure to delete this record ?')) {
+  if (confirm('Pastikan data yang anda akan hapus benar')) {
     row = td.parentElement.parentElement;
     document.getElementById("petList").deleteRow(row.rowIndex);
     resetForm();
@@ -269,46 +258,37 @@ function validate() {
   return isValid;
 }
 
-function resetForm() {
-  document.getElementById("fullName").value = "";
-  document.getElementById("jhewan").value = "";
-  document.getElementById("keluhan").value = "";
-  document.getElementById("kasus").value = "";
-  selectedRow = null;
+const wrapper = document.querySelector(".wrapper"),
+  form = document.querySelector("form"),
+  fileInp = form.querySelector("input"),
+  infoText = form.querySelector("p"),
+  closeBtn = document.querySelector(".close"),
+  copyBtn = document.querySelector(".copy");
+function fetchRequest(file, formData) {
+  infoText.innerText = "Scanning QR Code...";
+  fetch("http://api.qrserver.com/v1/read-qr-code/", {
+    method: 'POST', body: formData
+  }).then(res => res.json()).then(result => {
+    result = result[0].symbol[0].data;
+    infoText.innerText = result ? "Upload QR Code to Scan" : "Couldn't scan QR Code";
+    if (!result) return;
+    document.querySelector("textarea").innerText = result;
+    form.querySelector("img").src = URL.createObjectURL(file);
+    wrapper.classList.add("active");
+  }).catch(() => {
+    infoText.innerText = "Couldn't scan QR Code";
+  });
 }
-
-function onEdit(td) {
-  selectedRow = td.parentElement.parentElement;
-  document.getElementById("fullName").value = selectedRow.cells[0].innerHTML;
-  document.getElementById("jhewan").value = selectedRow.cells[1].innerHTML;
-  document.getElementById("keluhan").value = selectedRow.cells[2].innerHTML;
-  document.getElementById("kasus").value = selectedRow.cells[3].innerHTML;
-}
-
-function updateRecord(formData) {
-  selectedRow.cells[0].innerHTML = formData.fullName;
-  selectedRow.cells[1].innerHTML = formData.jhewan;
-  selectedRow.cells[2].innerHTML = formData.keluhan;
-  selectedRow.cells[3].innerHTML = formData.kasus;
-}
-
-function onDelete(td) {
-  if (confirm('Are you sure to delete this record ?')) {
-    row = td.parentElement.parentElement;
-    document.getElementById("petList").deleteRow(row.rowIndex);
-    resetForm();
-  }
-}
-
-function validate() {
-  isValid = true;
-  if (document.getElementById("fullName").value == "") {
-    isValid = false;
-    document.getElementById("fullNameValidationError").classList.remove("hide");
-  } else {
-    isValid = true;
-    if (!document.getElementById("fullNameValidationError").classList.contains("hide"))
-      document.getElementById("fullNameValidationError").classList.add("hide");
-  }
-  return isValid;
-}
+fileInp.addEventListener("change", async e => {
+  let file = e.target.files[0];
+  if (!file) return;
+  let formData = new FormData();
+  formData.append('file', file);
+  fetchRequest(file, formData);
+});
+copyBtn.addEventListener("click", () => {
+  let text = document.querySelector("textarea").textContent;
+  navigator.clipboard.writeText(text);
+});
+form.addEventListener("click", () => fileInp.click());
+closeBtn.addEventListener("click", () => wrapper.classList.remove("active"))
