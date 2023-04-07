@@ -1,60 +1,183 @@
 <!DOCTYPE html>
-<html>
 
 <head>
-  <title>
-    MY APP
-  </title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Pet Health Care</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/vet.png" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <link href="index.css" rel="stylesheet" />
 </head>
 
-<body>
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">Pet Health Care</a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#race">Cat
+                            Race</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Sick
+                            Form</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="#checkout">Checkout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+            <img class="masthead-avatar mb-5" src="assets/vet.png" alt="logo vet" />
+            <h1 class="masthead-heading text-uppercase mb-0">Pet Health Care</h1>
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <p class="masthead-subheading font-weight-light mb-0">Cure Your Cat Here</p>
+        </div>
+    </header>
+    <!-- Portfolio Section-->
+    <section class="page-section portfolio" id="race">
+        <div class="container">
+            <!-- Portfolio Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Cat Race</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Portfolio Grid Items-->
+            <div class="row justify-content-center" id="render">
+                <!-- JS bakal ngerender disini -->
+            </div>
+        </div>
+    </section>
+    <!-- Form Section-->
+    <section class="page-section bg-primary text-white mb-0" id="about">
+        <div class="container">
+            <!-- Form Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-white">Sick Form</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Form -->
+            <div class="container px-5 my-5" style="color: black;">
+                <form id="SickForm" >
+                    <div class="mb-3">
+                        <label class="form-label" for="nama">Nama</label>
+                        <input class="form-control" id="nama" type="text" placeholder="Nama" data-sb-validations="required" />
+                        <div class="invalid-feedback" data-sb-feedback="nama:required">Nama is required.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="catRace">Cat Race</label>
+                        <select class="form-select" id="catRace" aria-label="Cat Race">
+                            <option value="Siamese">Siamese</option>
+                            <option value="Ragdoll">Ragdoll</option>
+                            <option value="Persia">Persia</option>
+                            <option value="Bengal">Bengal</option>
+                            <option value="Hutan">Hutan</option>
+                            <option value="Norwegia">Norwegia</option>
+                            <option value="Siberia">Siberia</option>
+                            <option value="Sphinx">Sphinx</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label d-block">Keluhan</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="muntah" type="checkbox" name="keluhan" value="muntah" />
+                            <label class="form-check-label" for="muntah">Muntah</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="diare" type="checkbox" name="keluhan" value="diare"/>
+                            <label class="form-check-label" for="diare">Diare</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="scabies" type="checkbox" name="keluhan" value="scabies"/>
+                            <label class="form-check-label" for="scabies">Scabies</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="diabetes" type="checkbox" name="keluhan" value="diabetes"/>
+                            <label class="form-check-label" for="diabetes">Diabetes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="ispa" type="checkbox" name="keluhan" value="ispa"/>
+                            <label class="form-check-label" for="ispa">Ispa</label>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        <button class="btn btn-primary btn-lg" id="submitButton" type="button" onclick = "onFormSubmit()">Submit</button>
+                    </div>
+                </form>
+            </div>
 
-  <h1>
-    <center>MY APP</center>
-  </h1>
-  <hr>
-  <div class="pet-form">
-    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
-      <div>
-        <label>Nama</label><label class="validation-error hide" id="fullNameValidationError">.</label>
-        <input type="text" name="fullName" id="fullName">
-      </div>
-      <div>
-        <label>Hewan</label>
-        <input type="text" name="jhewan" id="jhewan">
-      </div>
-      <div>
-        <label>Jenis</label>
-        <input type="text" name="keluhan" id="keluhan">
-      </div>
-      <div>
-        <label>Keluhan</label>
-        <input type="text" name="kasus" id="kasus">
-      </div>
-      <div class="form-action-buttons">
-        <input type="submit" value="Submit">
-      </div>
-    </form>
-  </div>
-  <br />
-  <div class="pet-table">
-    <table class="list" id="petList">
-      <thead>
-        <tr>
-          <th>Nama</th>
-          <th>Hewan</th>
-          <th>Jenis</th>
-          <th>Keluhan</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
+        </div>
+    </section>
+    <!-- checkout Section-->
+    <section class="page-section" id="checkout">
+        <div class="container">
+            <!-- checkout Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Checkout</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- checkout Section-->
+            <table class="table" id="petlist">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Ras</th>
+                    <th scope="col">Keluhan</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
 
-      </tbody>
-    </table>
-  </div>
-  <script src="index.js"></script>
+                </tbody>
+        </div>
+    </section>
+
+
+    <!-- Copyright Section
+    <section>
+        <div class="copyright py-4 text-center text-white">
+            <div class="container"><small>Copyright &copy; joinquil fox 2023</small></div>
+        </div>
+    </section> -->
+    
+    <!--Modals-->
+    <div id="modal">
+        
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="index.js"></script>
 </body>
 
 </html>

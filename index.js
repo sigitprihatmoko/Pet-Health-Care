@@ -1,29 +1,29 @@
 // Dataset
 
 const data = {
-  hewan: 'kucing',
-  jenis: [
-    ["siamese", 20000],
-    ["ragdoll", 50000],
-    ["persia", 30000],
-    ["bengal", 20000],
-    ["hutan", 35000],
-    ["norwegia", 55000],
-    ["siberia", 35000],
-    ["sphinx", 50000]
-  ],
-  keluhan: [
-    ["muntah", 5000],
-    ["diare", 10000],
-    ["scabies", 30000],
-    ["diabetes", 45000],
-    ["ispa", 65000]
-  ]
+    hewan: 'kucing',
+    jenis: [
+        ["siamese", 20000],
+        ["ragdoll", 50000],
+        ["persia", 30000],
+        ["bengal", 20000],
+        ["hutan", 35000],
+        ["norwegia", 55000],
+        ["siberia", 35000],
+        ["sphinx", 50000]
+    ],
+    keluhan: [
+        ["muntah", 5000],
+        ["diare", 10000],
+        ["scabies", 30000],
+        ["diabetes", 45000],
+        ["ispa", 65000]
+    ]
 
 }
 
 const dataCustomer = [
-  
+
 ]
 
 /*
@@ -34,14 +34,14 @@ note: input tidak case sensitive
 */
 
 function getBasicPrice(jenis, dataset) {
-  let basicPrice = 0;
-  let value = jenis.toLowerCase();
-  for (let i = 0; i < dataset.jenis.length; i++) {
-    if (value === dataset.jenis[i][0]) {
-      basicPrice = dataset.jenis[i][1]
+    let basicPrice = 0;
+    let value = jenis.toLowerCase();
+    for (let i = 0; i < dataset.jenis.length; i++) {
+        if (value === dataset.jenis[i][0]) {
+            basicPrice = dataset.jenis[i][1]
+        }
     }
-  }
-  return basicPrice
+    return basicPrice
 }
 
 // expected output pada function ini adalah Harga basic jenis kucing 
@@ -57,20 +57,20 @@ input: array berisi keluhan (ex: ['muntah', 'ispa', 'scabies']), Dataset(data)
 note: input tidak case sensitive
 */
 function getKeluhanPrice(arrKeluhan, dataset) {
-  let keluhanPrice = 0;
-  for (let i = 0; i < arrKeluhan.length; i++) {
-    let value = arrKeluhan[i].toLowerCase();
+    let keluhanPrice = 0;
+    for (let i = 0; i < arrKeluhan.length; i++) {
+        let value = arrKeluhan[i].toLowerCase();
 
-    for (let j = 0; j < dataset.keluhan.length; j++) {
+        for (let j = 0; j < dataset.keluhan.length; j++) {
 
-      if (value === dataset.keluhan[j][0]) {
-        keluhanPrice += dataset.keluhan[j][1]
-        break;
-      }
+            if (value === dataset.keluhan[j][0]) {
+                keluhanPrice += dataset.keluhan[j][1]
+                break;
+            }
+        }
     }
-  }
 
-  return keluhanPrice
+    return keluhanPrice
 }
 
 // expected output pada function ini adalah Harga dari semua keluhan yang ada 
@@ -83,37 +83,37 @@ function getKeluhanPrice(arrKeluhan, dataset) {
 
 /*
 function untuk membuat suatu object dari input pasien hewan yang ada
-
+ 
 input disini bisa diambil dari inputan html didepan untuk kemudian dikirim lagi ke checkout
 contoh:
 nama: "sam", jenis:"Sphinx", keluhan: "muntah,ispa,scabies", data
-
+ 
 *note* 
 untuk input keluhan tidak boleh pake spasi setelah tanda koma
 */
 function createPasien(nama, jenis, keluhan, dataset) {
-  let obj = {}
-  let arrKel = keluhan.split(',') //array yang berisi keluhan
+    let obj = {}
+    let arrKel = keluhan //array yang berisi keluhan
 
-  let basicPrice = getBasicPrice(jenis, dataset)
-  let addPrice = getKeluhanPrice(arrKel, dataset)
-  let total = basicPrice + addPrice;
+    let basicPrice = getBasicPrice(jenis, dataset)
+    let addPrice = getKeluhanPrice(arrKel, dataset)
+    let total = basicPrice + addPrice;
 
-  //error handling jika jenis kucing kosong dan keluhan kosong
-  if (basicPrice === 0) { //jika basicPrice 0 maka jenis tidak ada dalam dataset
-    jenis = 'jenis kucing tidak ada!'
-  }
-  if (addPrice === 0) { //jika addPrice 0 maka tidak ada keluhan
-    arrKel = 'tidak ada keluhan!'
-  }
+    //error handling jika jenis kucing kosong dan keluhan kosong
+    if (basicPrice === 0) { //jika basicPrice 0 maka jenis tidak ada dalam dataset
+        jenis = 'jenis kucing tidak ada!'
+    }
+    if (addPrice === 0) { //jika addPrice 0 maka tidak ada keluhan
+        arrKel = 'tidak ada keluhan!'
+    }
 
-  obj.name = nama
-  obj.hewan = dataset.hewan
-  obj.jenis = jenis
-  obj.keluhan = arrKel
-  obj.totalPrice = total
+    obj.name = nama
+    obj.hewan = dataset.hewan
+    obj.jenis = jenis
+    obj.keluhan = arrKel
+    obj.totalPrice = total
 
-  return obj
+    return obj
 }
 
 //contoh
@@ -127,7 +127,7 @@ function createPasien(nama, jenis, keluhan, dataset) {
   keluhan: [ 'muntah', 'ispa', 'scabies' ]
   totalPrice: 150000
 } 
-
+ 
 Data object diatas bisa dikirim lewat DOM untuk keperluan Checkout
 */
 // console.log(createPasien('sam', '', "", data)); // contoh untuk error handling
@@ -138,177 +138,174 @@ Data object diatas bisa dikirim lewat DOM untuk keperluan Checkout
 /*
 Funsi dibawah merupakan addtional untuk frontend, 
 fungsi dibawah untuk mensortir jenis kucing dan harga per object
-
+ 
 kalau mau ditambah foto bisa, nanti link fotonya di assign kedalam object
 */
 
 function sortJenis(dataset) {
-  let arr = []
-  for (let i = 0; i < dataset.jenis.length; i++) {
-    let obj = { jenis: dataset.jenis[i][0], price: dataset.jenis[i][1] }
+    let arr = []
+    for (let i = 0; i < dataset.jenis.length; i++) {
+        let obj = { jenis: dataset.jenis[i][0], price: dataset.jenis[i][1], img: `${dataset.jenis[i][0]}.jpg` }
 
-    arr.push(obj)
-  }
+        arr.push(obj)
+    }
 
-  return arr
+    return arr
 }
 // console.log(sortJenis(data));
 
 /*
 Fungsi dibawah merupakan addtional untuk frontend, 
 fungsi dibawah untuk mensortir keluhan dan harga per object
-
+ 
 kalau mau ditambah foto bisa, nanti link fotonya di assign kedalam object
 */
 function sortKeluhan(dataset) {
-  let arr = []
-  for (let i = 0; i < dataset.keluhan.length; i++) {
-    let obj = { keluhan: dataset.keluhan[i][0], price: dataset.keluhan[i][1] }
+    let arr = []
+    for (let i = 0; i < dataset.keluhan.length; i++) {
+        let obj = { keluhan: dataset.keluhan[i][0], price: dataset.keluhan[i][1] }
 
-    arr.push(obj)
-  }
+        arr.push(obj)
+    }
 
-  return arr
+    return arr
 }
 // console.log(sortKeluhan(data));
 /*-------------------------------------------------------------------------------------*/
 
 
-// DOM
+let tampil = sortJenis(data)
 
-// codingan dibawah dari didit
+function render() {
+    let render = document.getElementById("render");
+    render.innerHTML = ""
 
-var selectedRow = null
+    for (let i = 0; i < tampil.length; i++) {
+        render.innerHTML += `<div class="col-md-6 col-lg-4 mb-5">
+    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal${i}">
+        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+        </div>
+        <img class="img-fluid" src="assets/${tampil[i].img}" alt="foto kuscing" />
+        <h4>${tampil[i].jenis}</h4>
+    </div>
+</div>`
 
-function displayCheckout() {
-  nama = document.getElementById("fullName").value;
-  hewan = document.getElementById("jhewan").value;
-  jenis = document.getElementById("keluhan").value;
-  keluhan = document.getElementById("kasus").value;
-  let pasienbaru = createPasien(nama, jenis, keluhan, data)
-  dataCustomer.push(pasienbaru)
-  return pasienbaru
+    }
+}
+render()
+
+
+function tampilModal() {
+    let render = document.getElementById("modal");
+    render.innerHTML = ""
+
+    for (let i = 0; i < tampil.length; i++) {
+        render.innerHTML += `<div class="portfolio-modal modal fade" id="portfolioModal${i}" tabindex="-1" aria-labelledby="portfolioModal1"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
+                    aria-label="Close"></button></div>
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">${tampil[i].jenis} Cat</h2>
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+                            <img class="img-fluid rounded mb-5" src="assets/${tampil[i].img}" alt="foto kucing" />
+                            <h4>Price: ${tampil[i].price}</h4>
+                            <button class="btn btn-primary" data-bs-dismiss="modal">
+                                <i class="fas fa-xmark fa-fw"></i>
+                                Close Window
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`
+
+    }
 }
 
-function onFormSubmit() {
-  displayCheckout()
-  if (validate()) {
-    var formData = readFormData();
-    if (selectedRow == null)
-      insertNewRecord(formData);
-    else
-      updateRecord(formData);
-    resetForm();
-  }
+tampilModal()
+
+
+
+// Create data
+function create() {
+    let nama = document.getElementById("nama").value;
+    let jenis = document.getElementById("catRace").value;
+    let checkboxes = document.querySelectorAll('input[name="keluhan"]:checked');
+    let keluhan = [];
+
+    checkboxes.forEach(element => {
+        keluhan.push(element.value)
+    });
+    let pasienbaru = createPasien(nama, jenis, keluhan, data)
+    return pasienbaru
 }
 
-function readFormData() {
-  var formData = {};
-  formData["fullName"] = document.getElementById("fullName").value;
-  formData["jhewan"] = document.getElementById("jhewan").value;
-  formData["keluhan"] = document.getElementById("keluhan").value;
-  formData["kasus"] = document.getElementById("kasus").value;
-  return formData;
-}
 
+// Read data
 function insertNewRecord(data) {
-  var table = document.getElementById("petList").getElementsByTagName('tbody')[0];
-  var newRow = table.insertRow(table.length);
-  cell1 = newRow.insertCell(0);
-  cell1.innerHTML = data.fullName;
-  cell2 = newRow.insertCell(1);
-  cell2.innerHTML = data.jhewan;
-  cell3 = newRow.insertCell(2);
-  cell3.innerHTML = data.keluhan;
-  cell4 = newRow.insertCell(3);
-  cell4.innerHTML = data.kasus;
-  cell4 = newRow.insertCell(4);
-  cell4.innerHTML = `<a onClick="onEdit(this)">Edit</a>
-                       <a onClick="onDelete(this)">Delete</a>`;
+    var table = document.getElementById("petlist").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.length);
+    cell1 = newRow.insertCell(0);
+    cell1.innerHTML = data.name;
+    cell2 = newRow.insertCell(1);
+    cell2.innerHTML = data.jenis;
+    cell3 = newRow.insertCell(2);
+    cell3.innerHTML = data.keluhan;
+    cell4 = newRow.insertCell(3);
+    cell4.innerHTML = data.totalPrice;
+    cell5 = newRow.insertCell(4);
+    cell5.innerHTML = `Belum Dibayar`
+    cell6 = newRow.insertCell(5);
+    cell6.innerHTML = `<button class="btn btn-secondary"  id="Bayar" type="button" onClick="bayar(this)">Bayar</button>
+    <button class="btn btn-secondary" id="delete" type="button" onClick="onDelete(this)">Delete</button>`;
+  }
+
+  function onFormSubmit() {
+    let data = create()
+    insertNewRecord(data);
+    clear()
+    
 }
 
 function resetForm() {
-  document.getElementById("fullName").value = "";
-  document.getElementById("jhewan").value = "";
-  document.getElementById("keluhan").value = "";
-  document.getElementById("kasus").value = "";
-  selectedRow = null;
+    document.location.reload()
+  }
+
+function clear() {
+    document.getElementById("nama").value = "";
 }
 
-function onEdit(td) {
-  selectedRow = td.parentElement.parentElement;
-  document.getElementById("fullName").value = selectedRow.cells[0].innerHTML;
-  document.getElementById("jhewan").value = selectedRow.cells[1].innerHTML;
-  document.getElementById("keluhan").value = selectedRow.cells[2].innerHTML;
-  document.getElementById("kasus").value = selectedRow.cells[3].innerHTML;
-}
-function updateRecord(formData) {
-  selectedRow.cells[0].innerHTML = formData.fullName;
-  selectedRow.cells[1].innerHTML = formData.jhewan;
-  selectedRow.cells[2].innerHTML = formData.keluhan;
-  selectedRow.cells[3].innerHTML = formData.kasus;
+//Delete Data
+function bayar(td) {
+    if (confirm('Terimakasih telah melakukan pembayaran')) {
+        cell5.innerHTML = `Sudah Selesai & Sudah Dibayar`
+        cell6.innerHTML = `<button class="btn btn-secondary"  id="ambil" type="button" onclick= "status()">Ambil kucing</button>`;
+    }
+  }
+
+function status() {
+    cell5.innerHTML = `Kucing sudah diambil`
+    cell6.innerHTML = `Selesai`;
 }
 
+//Delete Data
 function onDelete(td) {
-  if (confirm('Are you sure to delete this record ?')) {
-    row = td.parentElement.parentElement;
-    document.getElementById("petList").deleteRow(row.rowIndex);
-    resetForm();
+    if (confirm('Are you sure to delete this record ?')) {
+      row = td.parentElement.parentElement;
+      document.getElementById("petlist").deleteRow(row.rowIndex);
+    }
   }
-}
-function validate() {
-  isValid = true;
-  if (document.getElementById("fullName").value == "") {
-    isValid = false;
-    document.getElementById("fullNameValidationError").classList.remove("hide");
-  } else {
-    isValid = true;
-    if (!document.getElementById("fullNameValidationError").classList.contains("hide"))
-      document.getElementById("fullNameValidationError").classList.add("hide");
-  }
-  return isValid;
-}
 
-function resetForm() {
-  document.getElementById("fullName").value = "";
-  document.getElementById("jhewan").value = "";
-  document.getElementById("keluhan").value = "";
-  document.getElementById("kasus").value = "";
-  selectedRow = null;
-}
 
-function onEdit(td) {
-  selectedRow = td.parentElement.parentElement;
-  document.getElementById("fullName").value = selectedRow.cells[0].innerHTML;
-  document.getElementById("jhewan").value = selectedRow.cells[1].innerHTML;
-  document.getElementById("keluhan").value = selectedRow.cells[2].innerHTML;
-  document.getElementById("kasus").value = selectedRow.cells[3].innerHTML;
-}
-
-function updateRecord(formData) {
-  selectedRow.cells[0].innerHTML = formData.fullName;
-  selectedRow.cells[1].innerHTML = formData.jhewan;
-  selectedRow.cells[2].innerHTML = formData.keluhan;
-  selectedRow.cells[3].innerHTML = formData.kasus;
-}
-
-function onDelete(td) {
-  if (confirm('Are you sure to delete this record ?')) {
-    row = td.parentElement.parentElement;
-    document.getElementById("petList").deleteRow(row.rowIndex);
-    resetForm();
-  }
-}
-
-function validate() {
-  isValid = true;
-  if (document.getElementById("fullName").value == "") {
-    isValid = false;
-    document.getElementById("fullNameValidationError").classList.remove("hide");
-  } else {
-    isValid = true;
-    if (!document.getElementById("fullNameValidationError").classList.contains("hide"))
-      document.getElementById("fullNameValidationError").classList.add("hide");
-  }
-  return isValid;
-}
